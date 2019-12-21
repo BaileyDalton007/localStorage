@@ -13,6 +13,5 @@ const store = () => {
     
     localStorage.setItem(date + time, output);
     
-    // return false;
 }
 
