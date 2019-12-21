@@ -1,15 +1,18 @@
-// localStorage.clear();
+document.addEventListener("DOMContentLoaded", function() { 
+    for (let i = 0; i < localStorage.length; i++){
+        document.getElementById("lastEntries").innerText += localStorage.getItem(localStorage.key(i)) + "\n";
+    } 
+});
 
 const store = () => {
-    let d = new Date();
-    let date = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear();
-    let waterAmout = Number(document.forms['inputField']['waterAmount'].value)
-    let output = date +"  "+ waterAmout +"oz";
+    const d = new Date();
+    const date = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear();
+    const time = d.getSeconds() + d.getHours + d.getMinutes;
+    const waterAmount = Number(document.forms['inputField']['waterAmount'].value)
+    const output = date +"  "+ waterAmount +"oz";
     
-    localStorage.setItem(output, 0);
-
-    for (i = 0; i < localStorage.length; i++){
-        console.log(localStorage.key(i));
-    }
-    return false;
+    localStorage.setItem(date + time, output);
+    
+    // return false;
 }
+
