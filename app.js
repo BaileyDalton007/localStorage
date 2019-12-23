@@ -1,6 +1,16 @@
-document.addEventListener("DOMContentLoaded", function() { 
+//localStorage.clear();
+
+document.addEventListener("DOMContentLoaded", function() {
+    sortArray = [];
     for (let i = 0; i < localStorage.length; i++){
-        document.getElementById("lastEntries").innerText += localStorage.getItem(localStorage.key(i)) + "\n";
+        sortArray.push(localStorage.key(i));
+
+        let postArray = sortArray.sort(function(a, b) {
+            return a - b;
+        });
+
+        console.log(postArray);
+        //document.getElementById("lastEntries").innerText += localStorage.getItem(localStorage.key(i)) + "\n";
     } 
 });
 
@@ -11,7 +21,7 @@ const store = () => {
     const waterAmount = Number(document.forms['inputField']['waterAmount'].value)
     const output = date +"  "+ waterAmount +"oz";
     
-    localStorage.setItem(date + time, output);
-    
-}
+    let currId = localStorage.length + 1;
 
+    localStorage.setItem(currId, output);
+}
