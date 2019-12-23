@@ -3,11 +3,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     sortArray = [];
     for (let i = 0; i < localStorage.length; i++) {
-        sortArray.push([localStorage.key(i), localStorage.getItem(localStorage.key(i))]);
-        sortArray = sortArray.sort();
-        
+        sortArray.push([Number(localStorage.key(i).substring(5)), localStorage.getItem(localStorage.key(i))]);
+        sortArray = sortArray.sort(function(a, b){return a[0]-b[0]});
     }
-    console.log(sortArray);
+
     for (let i = 0; i < sortArray.length; i++) {
                 document.getElementById("lastEntries").innerText += sortArray[i][1] + "\n";
             }
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
 const store = () => {
     const d = new Date();
     const date = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear();
-    const time = d.getSeconds() + d.getHours + d.getMinutes;
     const waterAmount = Number(document.forms['inputField']['waterAmount'].value)
     const output = date +"  "+ waterAmount +"oz";
     
