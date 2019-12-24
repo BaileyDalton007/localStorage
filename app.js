@@ -14,6 +14,12 @@ document.addEventListener("DOMContentLoaded", function() {
     
     );
 
+const clearEntries = () => {
+    localStorage.clear();
+    console.log('cleared');
+    window.location.reload();
+}
+
 const store = () => {
     const d = new Date();
     const date = d.getMonth() + "/" + d.getDate() + "/" + d.getFullYear();
@@ -23,5 +29,4 @@ const store = () => {
     const currId = "entry" + (localStorage.length + 1);
 
     localStorage.setItem(currId, output);
-    console.log(localStorage)
 }
